@@ -1,5 +1,6 @@
 package tests;
 
+import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import core.BaseSelenideTest;
@@ -16,32 +17,26 @@ import static helpers.TestXpath.*;
 public class Auth extends BaseSelenideTest {
 
 
+
     /**
      * Тест авторизации
      */
 
 
     @Test
-    public void newuser1() throws InterruptedException {
+    public void newuser() throws InterruptedException {
         //* Генерируем номер
         int d = (int) (Math.random() * 300000001);
 
         open(reg);
         $(By.name("phone")).sendKeys("72)" + d);
         $(By.xpath(submit)).click();
+        $(By.xpath("//*[contains(text(), 'Для регистрации по номеру')]"));
         $(By.xpath("//form/div/div/label")).click();
         $(By.xpath(submit)).click();
         $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
 
     }
-    @Test
-    public void newuser() throws InterruptedException {
-        open(reg);
-        $(By.name("phone")).sendKeys("7232323232");
-        $(By.xpath(submit)).click();
-        $(By.xpath("//*[contains(text(), 'Для регистрации по номеру')]"));
-    }
-
 
 
     @Test
@@ -49,9 +44,8 @@ public class Auth extends BaseSelenideTest {
         open(reg);
         $(By.name("phone")).sendKeys(baseacc);
         $(By.xpath(submit)).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys("2222");
-        $(By.xpath("//*[contains(text(), 'Неверный код')]"));
-
+        $(By.cssSelector("[data-id='0']")).sendKeys(novalidcode);
+        $(Selectors.byText("Неверный код")).shouldBe(visible);
     }
 
     @Test
@@ -61,8 +55,7 @@ public class Auth extends BaseSelenideTest {
         $(By.name("phone")).sendKeys(baseacc);
         $(By.xpath(submit)).click();
         $(By.xpath("//*[text() = 'Запросить код']")).click();
-        $(By.xpath("//*[contains(text(), 'СМС успешно отправлено')]"));
-
+        $(Selectors.byText("СМС успешно отправлено")).shouldBe(visible);
     }
 
     @Test
@@ -70,7 +63,7 @@ public class Auth extends BaseSelenideTest {
         open(reg);
         $(By.name("phone")).sendKeys(accblock);
         $(By.xpath(submit)).click();
-        $(By.xpath("//*[contains(text(), 'Пользователь заблокирован')]"));
+        $(Selectors.byText("Пользователь заблокирован")).shouldBe(visible);
     }
 
 
