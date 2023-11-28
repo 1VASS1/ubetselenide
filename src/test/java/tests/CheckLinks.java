@@ -33,10 +33,8 @@ public class CheckLinks extends BaseSelenideTest {
     public void checklinksheadpage() throws InterruptedException {
         open(home);
         $(By.xpath("//a[@href='/registration']")).shouldHave(text("Войти"));
-        open(reg);
-        $(By.name("phone")).sendKeys(baseacc);
-        $(By.xpath(submit)).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+        //Инициализация базовой авторизации
+        baseauth();
         $("header").shouldBe(exist,visible);
         // Проверка наличия кнопки пополнить
         $(By.xpath("//a[@class='header_button__2lcv- header_cashbox__1lK3t header_orange__2p0HD']")).shouldBe(exist,visible);
@@ -94,12 +92,9 @@ public class CheckLinks extends BaseSelenideTest {
     }
         @Test
         public void checklinksprofilepage2() throws InterruptedException {
+            //Инициализация базовой авторизации
 
             //Проверка наличия ссылок в меню кабинета
-            open(reg);
-            $(By.name("phone")).sendKeys(baseacc);
-            $(By.xpath(submit)).click();
-            $(By.cssSelector("[data-id='0']")).sendKeys("1111");
             $(By.xpath("//*[text() = 'Профиль']"));
             $(By.xpath("//a[@href='/profile']"));
             $(By.xpath("//*[text() = 'Партнёрка']"));
@@ -219,7 +214,7 @@ public class CheckLinks extends BaseSelenideTest {
 
             //Проверка наличия полей в разделе Бонусы
 
-           open("https://test.ubet.kz/bonuses");
+           open(bonuses);
             $(By.xpath("//div[@class='cabinet_mark__2ZLrF']"));
             $(By.xpath("//*[text() = 'Доступные']")).click();
             $(By.xpath("//div[@class='style_cards__2iXLc']"));

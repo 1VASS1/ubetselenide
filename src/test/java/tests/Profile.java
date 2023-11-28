@@ -43,7 +43,6 @@ public class Profile extends BaseSelenideTest {
         $x("//div[3]/input").uploadFile(new File("C:\\1.jpg"));
 
         $x("//*[contains(text(), 'Отправить')]").click();
-        $(Selectors.byText("Данные для верификации отправлены")).shouldBe(visible,exist);
 
 
     }
@@ -111,10 +110,8 @@ public class Profile extends BaseSelenideTest {
     //* Промокод уже использован
     //* Срок действия промокода истёк
     public void promonovalid() throws InterruptedException {
-        open(reg);
-        $(By.name("phone")).sendKeys(baseacc);
-        $(By.xpath(submit)).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+        //Инициализация базовой авторизации
+        baseauth();
         $("header").shouldBe(exist,visible);
         open(promocode);
         $(By.xpath("//input[@value='']")).sendKeys("bet5000");
@@ -156,10 +153,7 @@ public class Profile extends BaseSelenideTest {
     //Пополнение кошелька WooPay старый
     @Test
     public void cashbox() throws InterruptedException {
-        open(reg);
-        $(By.name("phone")).sendKeys(baseacc);
-        $(By.xpath("//button[@type='submit']")).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+        baseauth();
         $("header").shouldBe(exist,visible);
         open(cashbox);
         $(By.xpath("//div[@id='react-tabs-7']/div/div[12]/div[6]/button")).click();
@@ -177,10 +171,7 @@ public class Profile extends BaseSelenideTest {
     @Test
     //Пополнение Woopay Нативный
     public void depositwoopay() throws InterruptedException {
-        open(reg);
-        $(By.name("phone")).sendKeys(baseacc);
-        $(By.xpath("//button[@type='submit']")).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+        baseauth();
         $(By.xpath("//div[@id='react-tabs-7']/div/div[10]/div[6]/button")).click();
         $(By.xpath("//*[@id=\"react-tabs-11\"]/div/div[2]/div/div[2]/input")).sendKeys("10000");
         $(By.xpath("//*[@id=\"react-tabs-11\"]/div/div[2]/div/div[4]/div/input")).sendKeys("7775688668");

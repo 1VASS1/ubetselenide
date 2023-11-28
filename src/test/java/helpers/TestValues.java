@@ -13,6 +13,8 @@ public class TestValues {
     public  static  String baseacc="7234567878";
     public  static  String basecode="1111";
 
+    public  static  String novalidcode="2222";
+
     /** Нарушении пункта 1 подпункта 27 документа**/
     public  static  String promoblockacc="7342342340";
 
