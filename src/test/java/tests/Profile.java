@@ -172,9 +172,9 @@ public class Profile extends BaseSelenideTest {
     //Пополнение Woopay Нативный
     public void depositwoopay() throws InterruptedException {
         baseauth();
-        $(By.xpath("//div[@id='react-tabs-7']/div/div[10]/div[6]/button")).click();
-        $(By.xpath("//*[@id=\"react-tabs-11\"]/div/div[2]/div/div[2]/input")).sendKeys("10000");
-        $(By.xpath("//*[@id=\"react-tabs-11\"]/div/div[2]/div/div[4]/div/input")).sendKeys("7775688668");
+        $(By.xpath("//div/div[10]/div[6]/button")).click();
+        $(By.xpath("//div/div[2]/div/div[2]/input")).sendKeys("10000");
+        $(By.xpath("//div/div[2]/div/div[4]/div/input")).sendKeys("7775688668");
         $(By.xpath("//*[text() = 'Продолжить']")).click();
         $(By.xpath("//input[@data-id='0']")).sendKeys("103000");
         $(By.xpath("//*[text() = 'Неверный код']"));

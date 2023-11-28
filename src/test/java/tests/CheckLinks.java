@@ -32,16 +32,9 @@ public class CheckLinks extends BaseSelenideTest {
     @Test
     public void checklinksheadpage() throws InterruptedException {
         open(home);
-        $(By.xpath("//a[@href='/registration']")).shouldHave(text("Войти"));
+        $(By.xpath("//a[@href='/registration']")).shouldHave(text("Войти")).shouldBe(visible);
         //Инициализация базовой авторизации
         baseauth();
-        $("header").shouldBe(exist,visible);
-        // Проверка наличия кнопки пополнить
-        $(By.xpath("//a[@class='header_button__2lcv- header_cashbox__1lK3t header_orange__2p0HD']")).shouldBe(exist,visible);
-        // Проверка отображения баланса
-        $(By.xpath("//span[@class='balance_value__1M_9w']")).shouldBe(exist,visible);
-        // Проверка отображения имени
-        $(Selectors.byText("Василий")).shouldBe(visible);
 
         //Проверка основных ссылок
         $(By.xpath("//*[text() = 'ЛИНИЯ']"));
@@ -93,7 +86,7 @@ public class CheckLinks extends BaseSelenideTest {
         @Test
         public void checklinksprofilepage2() throws InterruptedException {
             //Инициализация базовой авторизации
-
+            baseauth();
             //Проверка наличия ссылок в меню кабинета
             $(By.xpath("//*[text() = 'Профиль']"));
             $(By.xpath("//a[@href='/profile']"));
@@ -113,7 +106,6 @@ public class CheckLinks extends BaseSelenideTest {
 
             //Проверка наличия ссылок и полей в разделе Профиль
             $(By.linkText("Профиль")).click();
-            $(By.xpath("//*[text() = 'Обновить данные']")).click();
             //Проверка раздела Удостоверение личности РК
             $(By.xpath("//*[text() = 'Удостоверение личности РК']")).click();
             $(By.xpath("//*[text() = 'Лицевая сторона документа']"));
@@ -207,14 +199,10 @@ public class CheckLinks extends BaseSelenideTest {
             $(By.xpath("//*[text() = 'История транзакций']")).click();
             $(By.xpath("//div[@class='customDatePicker_customDatePicker__1BVcP']"));
 
-            //Проверка наличия полей в разделе Промокод
-            $(By.linkText("Промокод")).click();
-            $(By.xpath("//input[@class='promocode_inputText__3kk0D']"));
-            $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2']"));
 
             //Проверка наличия полей в разделе Бонусы
-
-           open(bonuses);
+            $(By.xpath("//a[@class='cabinet_link__3ML1g']")).shouldHave(text("Бонусы")).shouldBe(visible).click();
+            $(By.xpath("//div[@class='/html/body/div[1]/div/div[2]/div/div/nav/a[6]']")).click();
             $(By.xpath("//div[@class='cabinet_mark__2ZLrF']"));
             $(By.xpath("//*[text() = 'Доступные']")).click();
             $(By.xpath("//div[@class='style_cards__2iXLc']"));

@@ -34,6 +34,7 @@ public class TestLinks {
     public  static  String pub10="https://test.ubet.kz/partner-ubet10";
     public  static  String bigbonus="https://test.ubet.kz/bigbonus";
     public  static  String bigbonus100="https://test.ubet.kz/bigbonus100";
+    public  static  String bigbonus100girl="https://test.ubet.kz/bigbonus100girl";
 
 
 }

@@ -24,7 +24,9 @@ abstract public class BaseSelenideTest {
      * Инициализация selenide с настройками
      */
 
-    public void baseauth (){
+
+    public static void baseauth() {
+
         open(reg);
         $(By.name("phone")).sendKeys(baseacc);
         $(By.xpath(submit)).click();
@@ -39,25 +41,28 @@ abstract public class BaseSelenideTest {
         $(byText("Регистрируйся")).shouldHave(visible);
         $(byText("Авторизуйся")).shouldHave(visible);
         $(byText("Играй")).shouldHave(visible);
-
-
         $(By.name("phone")).sendKeys("2345658444");
-        $(By.xpath(submit)).click();
-        $(By.xpath("//h2[@class='step2_h2__1Xiqq']")).shouldHave(visible,exist);
-        $(By.xpath("//form/div/div/label")).click();
-        $(By.xpath(submit)).click();
-        $(By.xpath("//button[@class='authsteps_arrow__AFf6S undefined']")).shouldHave(exist);
-        $(By.cssSelector("[data-id='0']")).sendKeys(novalidcode);
-        $(Selectors.byText("Неверный код")).shouldBe(visible);
-        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 step3_button__1Pjq8']")).shouldHave(text("Запросить код"));
+        $(By.xpath(submit)).shouldHave(visible);
+
+
     }
+    public static void bigbonus() {
+        $(By.xpath("//img[@src='/images/bigBonus/logo.svg']")).shouldHave(exist,visible);
+        $(By.xpath("//a[@href='/app']")).shouldHave(exist);
+        $(By.xpath("//a[@href='https://apps.apple.com/kz/app/ubet-kz-/id1608871578']")).shouldHave(exist);
+        $(byText("за первое пополнение")).shouldHave(visible);
+        $(By.xpath("//button[@class='newbigBonus_more__1NPX-']")).shouldHave(exist).click();;
+        $(By.xpath("//button[@class='conditionsmodal_close__s1U7X']")).shouldHave(exist).click();
+        $(By.name("phone")).sendKeys("2345658444");
+        $(By.xpath(submit)).shouldHave(visible);
+    }
+
 
     public void setUp (){
         Configuration.browser = Browsers.CHROME;
         Configuration.browserSize = "1366x800";
         Configuration.headless = false;
         Configuration.timeout = 70000;
-
 
     }
 

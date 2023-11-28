@@ -28,13 +28,34 @@ public class Auth extends BaseSelenideTest {
         //* Генерируем номер
         int d = (int) (Math.random() * 300000001);
 
+        //Ввод номера и проверка заголовков
         open(reg);
         $(By.name("phone")).sendKeys("72)" + d);
+        $(Selectors.byText("Введите номер телефона")).shouldBe(visible);
+        $(Selectors.byText("Чтобы войти или зарегистрироваться")).shouldBe(visible);
+
         $(By.xpath(submit)).click();
-        $(By.xpath("//*[contains(text(), 'Для регистрации по номеру')]"));
+        //Проверка наличия лого
+        $(By.xpath("//img[@src='/images/ubet_logo.svg']")).shouldHave(exist,visible);
+        //Проверка заголовка и чекбокса
+        $(Selectors.byText("Для регистрации по номеру")).shouldBe(visible);
+
+        $(By.xpath("//h2[@class='step2_h2__1Xiqq']")).shouldHave(visible,exist);
         $(By.xpath("//form/div/div/label")).click();
         $(By.xpath(submit)).click();
+        //Проверка стрелки возврата назад
+        $(By.xpath("//button[@class='authsteps_arrow__AFf6S undefined']")).shouldHave(exist);;
+        //Проверка кнопки "Запросить код"
+        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 step3_button__1Pjq8']")).shouldHave(text("Запросить код")).shouldBe(visible);
+        //Ввод смс
         $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+        $("header").shouldBe(exist,visible);
+        // Проверка наличия кнопки пополнить
+        $(By.xpath("//a[@class='header_button__2lcv- header_cashbox__1lK3t header_orange__2p0HD']")).shouldBe(exist,visible);
+        // Проверка отображения баланса
+        $(By.xpath("//span[@class='balance_value__1M_9w']")).shouldBe(exist,visible);
+        // Проверка отображения имени
+        $(Selectors.byClassName("header_value__2gCW0")).shouldBe(visible,exist);
 
     }
 
