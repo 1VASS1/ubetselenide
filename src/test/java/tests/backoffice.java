@@ -10,19 +10,17 @@ import org.openqa.selenium.support.ui.Select;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.TestValues.*;
 import static helpers.TestLinks.*;
-
+import static helpers.TestXpath.*;
 public class backoffice extends BaseSelenideTest{
-    /**Верификаци пользователя**/
+
+    /**Верификация пользователя**/
     @Test
     public void verifuser() throws InterruptedException {
         //* Генерируем номер
         int inn = (int) ( Math.random() * 300001 );
         int docnum = (int) ( Math.random() * 30001 );
 
-        open(back);
-        $(By.name("login")).sendKeys(loginback);
-        $(By.name("password")).sendKeys(passback);
-        $(By.xpath("//button[@type='submit']")).click();
+        authbackoffice();
         $(By.xpath("//a[@href='/players/unverifiedList']")).click();
         $(By.xpath("//a[@type='button']")).click();
         $(By.id("doc_type")).selectOptionContainingText("Паспорт РК");

@@ -17,12 +17,12 @@ import static helpers.TestXpath.*;
 public class Auth extends BaseSelenideTest {
 
 
-
     /**
      * Тест авторизации
      */
 
 
+    //Регистрация нового пользователя
     @Test
     public void newuser() throws InterruptedException {
         //* Генерируем номер
@@ -60,6 +60,7 @@ public class Auth extends BaseSelenideTest {
     }
 
 
+    //Неверный код
     @Test
     public void novalidcode() throws InterruptedException {
         open(reg);
@@ -69,6 +70,7 @@ public class Auth extends BaseSelenideTest {
         $(Selectors.byText("Неверный код")).shouldBe(visible);
     }
 
+    //Запросить код
     @Test
     public void repeatcode() throws InterruptedException {
 

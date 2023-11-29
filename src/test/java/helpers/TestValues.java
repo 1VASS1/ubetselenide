@@ -9,6 +9,9 @@ public class TestValues {
     /** Номер заблокированного акк **/
     public  static  String accblock="7234567800";
 
+    /** Номер аккаунта с запросом ИИН **/
+    public  static  String acciin="7787548406";
+
     /** Базовый акк и код для тестов **/
     public  static  String baseacc="7234567878";
     public  static  String basecode="1111";

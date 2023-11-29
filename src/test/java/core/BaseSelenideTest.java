@@ -11,6 +11,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static helpers.TestLinks.back;
 import static helpers.TestLinks.reg;
 import static helpers.TestValues.*;
 import static helpers.TestXpath.submit;
@@ -24,13 +25,21 @@ abstract public class BaseSelenideTest {
      * Инициализация selenide с настройками
      */
 
-
+   //Авторизация
     public static void baseauth() {
-
         open(reg);
         $(By.name("phone")).sendKeys(baseacc);
         $(By.xpath(submit)).click();
         $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+
+    }
+
+    //Авторизация в бэкофисе
+    public static void authbackoffice() {
+        open(back);
+        $(By.name("login")).sendKeys(loginback);
+        $(By.name("password")).sendKeys(passback);
+        $(By.xpath("//button[@type='submit']")).click();
     }
 
     public void partners(){

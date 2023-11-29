@@ -26,15 +26,13 @@ import static helpers.TestXpath.*;
 public class Profile extends BaseSelenideTest {
 
     //Проверка загрузки файлов и отправки на верификацию
+
     @Test
     public void verif() throws InterruptedException {
-
-        open(reg);
-        $(By.name("phone")).sendKeys(baseacc);
-        $(By.xpath("//button[@type='submit']")).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+        baseauth();
         $("header").shouldBe(exist,visible);
         open(profile);
+        $(By.xpath("//div[@class='confirmed_text1__2EPHx']")).shouldHave(text(" Аккаунт ID: 68960 успешно верифицирован. "));
         $(By.xpath("//*[contains(text(), 'Обновить данные')]")).click();
         $(By.xpath("//*[contains(text(), 'Удостоверение личности РК')]")).click();
 
@@ -43,7 +41,8 @@ public class Profile extends BaseSelenideTest {
         $x("//div[3]/input").uploadFile(new File("C:\\1.jpg"));
 
         $x("//*[contains(text(), 'Отправить')]").click();
-
+        $(By.xpath("//div[@class='documents_back__2o0Fu']")).shouldHave(text("назад"));
+        $(By.xpath("//*[text() = 'Данные успешно отправлены! ']")).shouldBe(exist,visible);;
 
     }
 
@@ -57,7 +56,7 @@ public class Profile extends BaseSelenideTest {
     public void inn() throws InterruptedException {
 
         open(reg);
-        $(By.name("phone")).sendKeys("7787548406");
+        $(By.name("phone")).sendKeys(acciin);
         $(By.xpath("//button[@type='submit']")).click();
         $(By.cssSelector("[data-id='0']")).sendKeys("1111");
         $("header").shouldBe(exist,visible);
@@ -99,6 +98,7 @@ public class Profile extends BaseSelenideTest {
         $(By.className("promocode_inputText__3kk0D")).sendKeys("bet5000");
         $(By.xpath("//*[text() = 'Активировать']")).click();
         $(Selectors.byText("Промокод не может быть активирован по подозрению в нарушении пункта 1 подпункта 27 документа \"Правила приема ставок\"")).shouldBe(visible);
+
     }
 
 
