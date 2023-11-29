@@ -2,6 +2,10 @@ package helpers;
 
 public class TestXpath {
 
+    /** Кнопка запросить код */
+    public  static  String repeatcode="//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 step3_button__1Pjq8']";
+
+
 
     /** Поля авторизации */
     public  static  String submit="//button[@type='submit']";

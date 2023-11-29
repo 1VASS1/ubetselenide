@@ -46,7 +46,7 @@ public class Auth extends BaseSelenideTest {
         //Проверка стрелки возврата назад
         $(By.xpath("//button[@class='authsteps_arrow__AFf6S undefined']")).shouldHave(exist);;
         //Проверка кнопки "Запросить код"
-        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 step3_button__1Pjq8']")).shouldHave(text("Запросить код")).shouldBe(visible);
+        $(By.xpath(repeatcode)).shouldHave(text("Запросить код")).shouldBe(visible);
         //Ввод смс
         $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
         $("header").shouldBe(exist,visible);
@@ -75,7 +75,7 @@ public class Auth extends BaseSelenideTest {
         open(reg);
         $(By.name("phone")).sendKeys(baseacc);
         $(By.xpath(submit)).click();
-        $(By.xpath("//*[text() = 'Запросить код']")).click();
+        $(By.xpath(repeatcode)).click();
         $(Selectors.byText("СМС успешно отправлено")).shouldBe(visible);
     }
 

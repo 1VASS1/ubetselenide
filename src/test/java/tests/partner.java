@@ -61,7 +61,7 @@ public class partner extends BaseSelenideTest{
         $(By.xpath(submit)).click();
         $(By.xpath("//div[@class='step3_block__2UV4M']")).shouldHave(exist,visible);
         //Проверка кнопки "Запросить код"
-        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 step3_button__1Pjq8']")).shouldHave(text("Запросить код")).shouldBe(visible);
+        $(By.xpath(repeatcode)).shouldHave(text("Запросить код")).shouldBe(visible);
         //Проверка кнопки закрыть
         $(By.xpath("//i[@class='icon-cross style_close__10bzM']")).shouldHave(exist,visible).click();
     }
