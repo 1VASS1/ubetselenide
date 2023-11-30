@@ -1,5 +1,11 @@
 package helpers;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.w3c.dom.Text;
+
+import static com.codeborne.selenide.Selenide.$;
+
 public class TestXpath {
 
     /** Кнопка запросить код */
@@ -8,7 +14,7 @@ public class TestXpath {
 
 
     /** Поля авторизации */
-    public  static  String submit="//button[@type='submit']";
+    public  static String submit="//button[@type='submit']";
 
     /** Соц сети и номер в футере */
     public  static  String vk="//a[@href='https://vk.com/ubet_official']";

@@ -35,7 +35,6 @@ public class CheckLinks extends BaseSelenideTest {
         $(By.xpath("//a[@href='/registration']")).shouldHave(text("Войти")).shouldBe(visible);
         //Инициализация базовой авторизации
         baseauth();
-
         //Проверка основных ссылок
         $(By.xpath("//*[text() = 'ЛИНИЯ']"));
         $(By.xpath("//a[@href='/#live']")).shouldHave(text("ЛАЙВ"));

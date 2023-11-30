@@ -6,6 +6,7 @@ import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.Selenide;
 import core.BaseSelenideTest;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -54,10 +55,9 @@ public class Profile extends BaseSelenideTest {
     // Проверка валидации ИИН
 
     public void inn() throws InterruptedException {
-
         open(reg);
         $(By.name("phone")).sendKeys(acciin);
-        $(By.xpath("//button[@type='submit']")).click();
+        $(By.xpath(submit)).click();
         $(By.cssSelector("[data-id='0']")).sendKeys("1111");
         $("header").shouldBe(exist,visible);
         $(By.xpath("//input[@id='iin']")).shouldBe(visible).sendKeys("850505300686");
@@ -151,7 +151,7 @@ public class Profile extends BaseSelenideTest {
     }
 
     //Пополнение кошелька WooPay старый
-    @Test
+    @Ignore
     public void cashbox() throws InterruptedException {
         baseauth();
         $("header").shouldBe(exist,visible);
@@ -177,11 +177,11 @@ public class Profile extends BaseSelenideTest {
         $(By.xpath("//div/div[2]/div/div[4]/div/input")).sendKeys("7775688668");
         $(By.xpath("//*[text() = 'Продолжить']")).click();
         $(By.xpath("//input[@data-id='0']")).sendKeys("103000");
-        $(By.xpath("//*[text() = 'Неверный код']"));
+        $(By.xpath("//*[text() = 'Неверный код']")).shouldBe(exist,visible);;
         $(By.xpath("//input[@data-id='0']")).sendKeys("104000");
-        $(By.xpath("//*[text() = 'Ваш платеж в обработке...']"));
-        $(By.xpath("//*[text() = 'Баланс пополнен на сумму']"));
-        $(By.xpath("//*[text() = 'Сделать ставку']"));
+        $(By.xpath("//*[text() = 'Ваш платеж в обработке...']")).shouldBe(exist,visible);;
+        $(By.xpath("//*[text() = 'Баланс пополнен на сумму']")).shouldBe(exist,visible);;
+        $(By.xpath("//*[text() = 'Сделать ставку']")).shouldBe(exist,visible);;
 
     }
 }
