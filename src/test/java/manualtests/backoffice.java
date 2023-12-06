@@ -15,7 +15,7 @@ public class backoffice extends BaseSelenideTest{
 
     /**Ручные тесты бэкофис **/
 
-    //Провести верификацию пользователя
+    //Провести верификацию пользователя c заполнением полных данных
     @Test
     public void verifuser() throws InterruptedException {
         //* Генерируем номер
@@ -27,6 +27,7 @@ public class backoffice extends BaseSelenideTest{
         $(By.xpath("//a[@type='button']")).click();
         $(By.id("doc_type")).selectOptionContainingText("Паспорт РК");
         $(By.id("doc_number")).sendKeys("1" + docnum);
+        $(By.id("doc_date")).sendKeys("28-03-1999");
         $(By.id("doc_validity_date")).sendKeys("28-03-2030");
         $(By.id("issuing_authority")).sendKeys("Тест округа");
         $(By.id("iin")).sendKeys("990430" + inn);
@@ -44,6 +45,32 @@ public class backoffice extends BaseSelenideTest{
 
     }
 
+    //Провести верификацию пользователя без ИИН и Даты рождения
+    @Test
+    public void verifusernoinnnobirthday() throws InterruptedException {
+        //* Генерируем номер
+        int docnum = (int) ( Math.random() * 30001 );
+
+        authbackoffice();
+        $(By.xpath("//a[@href='/players/unverifiedList']")).click();
+        $(By.xpath("//a[@type='button']")).click();
+        $(By.id("doc_type")).selectOptionContainingText("Паспорт РК");
+        $(By.id("doc_number")).sendKeys("1" + docnum);
+        $(By.id("doc_date")).sendKeys("28-03-1999");
+        $(By.id("doc_validity_date")).sendKeys("28-03-2030");
+        $(By.id("issuing_authority")).sendKeys("Тест округа");
+        $(By.id("firstname")).sendKeys("Василий");
+        $(By.id("surname")).sendKeys("Test");
+        $(By.id("lastname")).sendKeys("Test");
+        $(By.id("bpl")).sendKeys("test");
+        $(By.id("sex")).selectOptionContainingText("male");
+        $(By.id("city_id")).selectOptionContainingText("Есик");
+        $(By.id("is_RK_resident")).selectOptionContainingText("Да");
+        $(By.id("citizenship")).selectOptionByValue("398");
+        $(By.id("check_duplicate_button")).click();
+        $(By.id("verifivate_button")).click();
+
+    }
 
     //Отказ верификаци пользователя
     @Test

@@ -21,6 +21,7 @@ import static helpers.TestXpath.submit;
  */
 abstract public class BaseSelenideTest {
 
+
     /**
      * Инициализация selenide с настройками
      */
@@ -32,8 +33,8 @@ abstract public class BaseSelenideTest {
         $(By.xpath(submit)).click();
         $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
 
-
     }
+
 
     //Авторизация в бэкофисе
     public static void authbackoffice() {

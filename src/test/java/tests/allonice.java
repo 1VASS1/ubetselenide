@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import core.BaseSelenideTest;
 import org.junit.jupiter.api.Test;
@@ -17,18 +16,18 @@ public class allonice extends BaseSelenideTest {
 
     //* Проверка акции "Все на лёд" без авторизации
     @Test
-    public void allonicenoauth() throws InterruptedException {
+    public void allonicenoauth()  {
         open(allonice);
         $(Selectors.byText("Для участия в акции необходимо авторизоваться")).shouldBe(visible,exist);
 
     }
     //* Проверка акции "Все на лёд" без верификации
     @Test
-    public void allonicenoirif()  {
+    public void allonicenoverif()  {
         open(reg);
         $(By.name("phone")).sendKeys(acciin);
         $(By.xpath(submit)).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys("1111");
+        $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
         $("header").shouldBe(exist,visible);
         open(allonice);
         $(Selectors.byText("Для участия в акции необходимо пройти верификацию")).shouldBe(visible,exist);
@@ -40,6 +39,9 @@ public class allonice extends BaseSelenideTest {
         baseauth();
         $("header").shouldBe(exist,visible);
         open(allonice);
+        //Cчетчик шайб
+        $(By.xpath("//div[@class='puckscounter_puck__2BrM2']")).shouldBe(visible);
+
         $(By.xpath("//button[@class='puckscounter_button__2aJjE']")).shouldHave(text("крутануть "));
 
     }
