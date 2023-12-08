@@ -37,6 +37,8 @@ public class CheckLinks extends BaseSelenideTest {
     public void checklinksheadpage() throws InterruptedException {
         open(home);
         $(By.xpath("//a[@href='/registration']")).shouldHave(text("Войти")).shouldBe(visible);
+        //Кнопка регистрации
+        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 header_button__2lcv-']")).shouldBe(visible,exist);
         //Инициализация базовой авторизации
         baseauth();
         //Проверка наличия ссылок в меню кабинета

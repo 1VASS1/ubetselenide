@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
@@ -63,4 +64,5 @@ public class Shares {
         $(By.xpath("//div[@class='noticeTooltip_text__36zDt']")).shouldHave(text("Пройдите верификацию"));
 
     }
+
 }
