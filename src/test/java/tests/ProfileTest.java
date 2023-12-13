@@ -1,9 +1,6 @@
 package tests;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
-import com.codeborne.selenide.Selenide;
 import core.BaseSelenideTest;
 
 import org.junit.Ignore;
@@ -22,7 +19,7 @@ import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
 
-public class Profile extends BaseSelenideTest {
+public class ProfileTest extends BaseSelenideTest {
 
     //Проверка загрузки файлов и отправки на верификацию
 

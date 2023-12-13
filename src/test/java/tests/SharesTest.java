@@ -2,7 +2,6 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
@@ -13,7 +12,7 @@ import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
 /** В работе **/
-public class Shares {
+public class SharesTest {
     //* Проверка наличия основных окон после авторизации
     @Test
     public void actionexpert() throws InterruptedException {

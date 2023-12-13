@@ -1,25 +1,17 @@
 package tests;
 
-import com.codeborne.selenide.*;
 import core.BaseSelenideTest;
 
-import org.junit.Ignore;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
-import static helpers.TestValues.*;
 import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
-public class CheckLinks extends BaseSelenideTest {
+public class CheckLinksTest extends BaseSelenideTest {
 
 
 

@@ -10,10 +10,9 @@ import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.*;
-import static core.BaseSelenideTest.*;
 import static helpers.TestLinks.*;
 
-public class MainProfile extends BaseSelenideTest {
+public class MainProfileTest extends BaseSelenideTest {
 
 
     @BeforeEach

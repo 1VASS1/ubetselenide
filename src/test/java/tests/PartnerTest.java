@@ -7,13 +7,12 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.TestLinks.*;
 import static helpers.TestValues.*;
 import static helpers.TestXpath.*;
 
-public class partner extends BaseSelenideTest{
+public class PartnerTest extends BaseSelenideTest{
     @Test
     public void partnerubet() throws InterruptedException {
         open(pub);

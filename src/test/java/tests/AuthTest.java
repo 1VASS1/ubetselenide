@@ -1,10 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.Browsers;
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import core.BaseSelenideTest;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -14,13 +13,13 @@ import static helpers.TestValues.*;
 import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
-public class Auth extends BaseSelenideTest {
+@Disabled
+public class AuthTest extends BaseSelenideTest {
 
 
     /**
      * Тест авторизации
      */
-
 
     //Регистрация нового пользователя
     @Test

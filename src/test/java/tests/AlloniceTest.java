@@ -12,7 +12,7 @@ import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
 
-public class allonice extends BaseSelenideTest {
+public class AlloniceTest extends BaseSelenideTest {
 
     //* Проверка акции "Все на лёд" без авторизации
     @Test

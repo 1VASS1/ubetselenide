@@ -2,7 +2,10 @@ package core;
 
 
 import com.codeborne.selenide.*;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.By;
 
@@ -74,7 +77,7 @@ abstract public class BaseSelenideTest {
         Configuration.browserSize = "1366x800";
         Configuration.headless = false;
         Configuration.timeout = 70000;
-
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
     /**
