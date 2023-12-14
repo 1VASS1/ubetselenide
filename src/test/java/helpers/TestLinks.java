@@ -1,6 +1,8 @@
 package helpers;
 
 public class TestLinks {
+    /*** Ссылка на Партёры UBET  */
+    public  static  String affiliate = "https://affiliate-test.ubet.kz/";
 
     /*** Ссылка на главную страницу */
     public  static  String home="https://test.ubet.kz";
@@ -32,8 +34,7 @@ public class TestLinks {
     /** Ссылка на страницу Мастерпрогнозов */
     public  static  String allonice = home + "/shares/allonice";
 
-    /*** Ссылка на Партёры UBET  */
-    public  static  String affiliate = "https://affiliate-test.ubet.kz/";
+
     /*** Ссылка на партнерские страницы и биг бонус  */
     public  static  String pub = home +"/partner-ubet";
     public  static  String pub7 = home +"/partner-ubet7";

@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Selectors;
 import core.BaseSelenideTest;
 
+import jdk.jfr.Enabled;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
@@ -18,7 +19,7 @@ import static helpers.TestValues.*;
 import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
-
+@Enabled
 public class ProfileTest extends BaseSelenideTest {
 
     //Проверка загрузки файлов и отправки на верификацию

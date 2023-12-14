@@ -1,10 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import core.BaseSelenideTest;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.visible;
@@ -12,20 +11,15 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.*;
 import static helpers.TestLinks.*;
 
-public class MainProfileTest extends BaseSelenideTest {
+public class ProfileUITest extends BaseSelenideTest {
 
-
-    @BeforeEach
-    public void init() {
-        baseauth();
-        Configuration.timeout = 70000;
-    }
 
     //Проверка основных разделов в разделе "Профиль", В РАБОТЕ!!
     @Test
     public void checkprofile() throws InterruptedException {
 
-
+        baseauth();
+        $("header").shouldBe(exist,visible);
         //Проверка наличия ссылок и полей в разделе Профиль
         $(By.linkText("Профиль")).click();
         $(By.xpath("//*[text() = 'Обновить данные']")).click();
@@ -69,6 +63,8 @@ public class MainProfileTest extends BaseSelenideTest {
     }
         @Test
         public void checkpartners() throws InterruptedException {
+            baseauth();
+            $("header").shouldBe(exist,visible);
             //Проверка наличия полей в разделе Партнерка
             $(By.linkText("Партнёрка")).click();
             $(By.xpath("//*[text() = '322BA259']")).shouldBe(visible, exist);
@@ -95,6 +91,8 @@ public class MainProfileTest extends BaseSelenideTest {
         }
         @Test
         public void checkstatus() throws InterruptedException {
+          baseauth();
+
             //Проверка наличия полей в разделе Мой статус
             // Ссылки кешбека, шкалу прогресса , шкалу статусов
             $(By.linkText("Мой статус")).click();
@@ -115,6 +113,8 @@ public class MainProfileTest extends BaseSelenideTest {
         //Проверка наличия полей в разделе Касса
         @Test
         public void checkcashbox() throws InterruptedException {
+            baseauth();
+            $("header").shouldBe(exist,visible);
             $(By.linkText("Касса")).click();
             $(By.xpath("//li[@id='react-tabs-0']")).shouldBe(exist);
             $(By.xpath("//*[text() = 'Выплата выигрышей']")).shouldBe(visible, exist);
@@ -130,9 +130,11 @@ public class MainProfileTest extends BaseSelenideTest {
         //Проверка наличия полей в разделе Бонусы
         @Test
         public void checkbonuses() throws InterruptedException {
+            baseauth();
+            $("header").shouldBe(exist,visible);
             open(bonuses);
 
-            $(By.xpath("//div[@class='cabinet_mark__2ZLrF']")).shouldBe(visible, exist);
+            $(By.xpath("//div[@class='bonuses_mark__3uYnu']")).shouldBe(visible, exist);
             $(By.xpath("//*[text() = 'Доступные']")).click();
             //Проверка отображения доступного бонуса
             $(By.xpath("//div[2]/div[1]/div[@class='style_cards__2iXLc']")).shouldBe(visible, exist);
@@ -153,7 +155,8 @@ public class MainProfileTest extends BaseSelenideTest {
 
     @Test
     public void checknotify() throws InterruptedException {
-
+        baseauth();
+        $("header").shouldBe(exist,visible);
         $(By.linkText("Уведомления")).click();
         $(By.xpath("//div[@class='notifications_title__noMyS']")).shouldBe(visible);
         $(By.xpath("//div[@class='accordion_item__HOBfC notifications_accordion__1yK1m']")).click();
@@ -161,4 +164,5 @@ public class MainProfileTest extends BaseSelenideTest {
         $(By.xpath("//div[@class='notifications_date__3gHjM']")).shouldBe(visible);
 
     }
+
 }

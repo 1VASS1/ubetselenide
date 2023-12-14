@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Selectors;
 import core.BaseSelenideTest;
 
+import jdk.jfr.Enabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -12,6 +13,7 @@ import static helpers.TestLinks.*;
 import static helpers.TestValues.*;
 import static helpers.TestXpath.*;
 
+@Enabled
 public class PartnerTest extends BaseSelenideTest{
     @Test
     public void partnerubet() throws InterruptedException {

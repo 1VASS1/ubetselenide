@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
+import jdk.jfr.Enabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
@@ -12,6 +13,7 @@ import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
 /** В работе **/
+@Enabled
 public class SharesTest {
     //* Проверка наличия основных окон после авторизации
     @Test

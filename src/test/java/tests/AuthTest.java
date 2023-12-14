@@ -65,7 +65,7 @@ public class AuthTest extends BaseSelenideTest {
         open(reg);
         $(By.name("phone")).sendKeys(baseacc);
         $(By.xpath(submit)).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys(novalidcode);
+        $(By.xpath("//input[@data-id='0']")).sendKeys(novalidcode);
         $(Selectors.byText("Неверный код")).shouldBe(visible);
     }
 

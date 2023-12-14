@@ -2,6 +2,7 @@ package tests;
 
 import core.BaseSelenideTest;
 
+import jdk.jfr.Enabled;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
 
+@Enabled
 public class CheckLinksTest extends BaseSelenideTest {
 
 
@@ -28,9 +30,9 @@ public class CheckLinksTest extends BaseSelenideTest {
     @Test
     public void checklinksheadpage() throws InterruptedException {
         open(home);
-        $(By.xpath("//a[@href='/registration']")).shouldHave(text("Войти")).shouldBe(visible);
+        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 header_button__2lcv- header_loginBtn__p_Sjv']")).shouldHave(text("Вход")).shouldBe(visible,exist);
         //Кнопка регистрации
-        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 header_button__2lcv-']")).shouldBe(visible,exist);
+        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 header_button__2lcv-']")).shouldHave(text("Регистрация")).shouldBe(visible,exist);
         //Инициализация базовой авторизации
         baseauth();
         //Проверка наличия ссылок в меню кабинета
@@ -93,7 +95,9 @@ public class CheckLinksTest extends BaseSelenideTest {
 
 
         $(By.xpath("//button[@class='cabinet_link__3ML1g']")).click();
-        $(By.xpath("//a[@href='/registration']")).shouldHave(text("Войти"));
+        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 header_button__2lcv- header_loginBtn__p_Sjv']")).shouldHave(text("Вход")).shouldBe(visible,exist);
+        //Кнопка регистрации
+        $(By.xpath("//button[@class='button_input__2TvKU button_big__3J0-f button_yellow__2REE2 header_button__2lcv-']")).shouldHave(text("Регистрация")).shouldBe(visible,exist);
 
 
     }
