@@ -3,6 +3,8 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import core.BaseSelenideTest;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
@@ -86,5 +88,23 @@ public class backoffice extends BaseSelenideTest{
         $(By.id("why_not_approved")).click();
         $(By.id("why_not_approved")).sendKeys("TEST");
         $(By.id("reject_button")).click();
+    }
+
+    @Test
+    @DisplayName("Отказ вывода пользователю")
+    //Выполнять тест если нужно несколько выводов подряд
+    //@RepeatedTest(5)
+    public void falsepay() throws InterruptedException {
+        open(back);
+        $(By.name("login")).sendKeys(loginback);
+        $(By.name("password")).sendKeys(passback);
+        $(By.xpath(submit)).click();
+        $(By.xpath("//a[@href='/cashouts/list']")).click();
+        $(By.xpath("//a[@class='btn btn-danger']")).click();
+        $(By.xpath("//input[@value='5']")).click();
+        $(By.xpath("//textarea[@name='why_rejected_message']")).sendKeys("test");
+        $(By.xpath(submit)).click();
+
+
     }
 }
