@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.ElementsCollection;
 import core.BaseSelenideTest;
 
 import org.junit.jupiter.api.DisplayName;
@@ -13,16 +14,19 @@ import static com.codeborne.selenide.Selenide.*;
 import static helpers.TestValues.*;
 import static helpers.TestLinks.*;
 import static helpers.TestXpath.*;
-public class backoffice extends BaseSelenideTest{
 
-    /**Ручные тесты бэкофис **/
+public class backoffice extends BaseSelenideTest {
+
+    /**
+     * Ручные тесты бэкофис
+     **/
 
     //Провести верификацию пользователя c заполнением полных данных
     @Test
     public void verifuser() throws InterruptedException {
         //* Генерируем номер
-        int inn = (int) ( Math.random() * 300001 );
-        int docnum = (int) ( Math.random() * 30001 );
+        int inn = (int) (Math.random() * 300001);
+        int docnum = (int) (Math.random() * 30001);
 
         authbackoffice();
         $(By.xpath("//a[@href='/players/unverifiedList']")).click();
@@ -33,7 +37,7 @@ public class backoffice extends BaseSelenideTest{
         $(By.id("doc_validity_date")).sendKeys("28-03-2030");
         $(By.id("issuing_authority")).sendKeys("Тест округа");
         $(By.id("iin")).sendKeys("990430" + inn);
-        $(By.id("firstname")).sendKeys("Василий");
+        $(By.id("firstname")).sendKeys("Генадий");
         $(By.id("surname")).sendKeys("Test");
         $(By.id("lastname")).sendKeys("Test");
         $(By.id("birthday")).sendKeys("30-04-1999");
@@ -51,7 +55,7 @@ public class backoffice extends BaseSelenideTest{
     @Test
     public void verifusernoinnnobirthday() throws InterruptedException {
         //* Генерируем номер
-        int docnum = (int) ( Math.random() * 30001 );
+        int docnum = (int) (Math.random() * 30001);
 
         authbackoffice();
         $(By.xpath("//a[@href='/players/unverifiedList']")).click();
@@ -107,4 +111,24 @@ public class backoffice extends BaseSelenideTest{
 
 
     }
-}
+
+
+
+    //Проверка всех ссылок в бэкофиссе
+    @Test
+    public void linksbackoffice() throws InterruptedException {
+
+        open(back);
+        $(By.name("login")).sendKeys(loginback);
+        $(By.name("password")).sendKeys(passback);
+        $(By.xpath(submit)).click();
+        //Получаем основные разделы
+        ElementsCollection links = $$("a[href]");
+
+        for (int i = 0; i < links.size(); i++) {
+            System.out.println(links.get(i).getAttribute("href"));
+        }
+        System.out.println("Количество ссылок на странице: " + links.size());
+      }
+    }
+
