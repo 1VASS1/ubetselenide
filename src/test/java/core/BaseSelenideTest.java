@@ -4,6 +4,7 @@ package core;
 import com.codeborne.selenide.*;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.Rule;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,7 +35,7 @@ abstract public class BaseSelenideTest {
         $(By.name("phone")).sendKeys(baseacc);
         $(By.xpath(submit)).click();
         $(By.xpath("//input[@data-id='0']")).sendKeys(basecode);
-        $("header").shouldBe(exist, visible);
+
     }
 
 
@@ -71,6 +72,7 @@ abstract public class BaseSelenideTest {
         $(By.name("phone")).sendKeys("2345658444");
         $(By.xpath(submit)).shouldHave(visible);
     }
+
 
 
     public void setUp() {

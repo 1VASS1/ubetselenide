@@ -78,6 +78,7 @@ public class AuthTest extends BaseSelenideTest {
         $(By.xpath(submit)).click();
         $(By.xpath(repeatcode)).click();
         $(Selectors.byText("СМС успешно отправлено")).shouldBe(visible);
+
     }
 
     @Test

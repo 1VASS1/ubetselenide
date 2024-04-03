@@ -2,7 +2,9 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
+import core.BaseSelenideTest;
 import jdk.jfr.Enabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Condition.*;
@@ -14,9 +16,10 @@ import static helpers.TestXpath.*;
 
 /** В работе **/
 @Enabled
-public class SharesTest {
-    //* Проверка наличия основных окон после авторизации
+public class SharesTest extends BaseSelenideTest {
+
     @Test
+    @DisplayName("Проверка наличия основных окон после авторизации")
     public void actionexpert() throws InterruptedException {
         baseauth();
         Configuration.timeout = 10000;
@@ -54,7 +57,7 @@ public class SharesTest {
         $(By.xpath("//a[@class='style_button__njloT']")).click();
         $(By.name("phone")).sendKeys(acciin);
         $(By.xpath(submit)).click();
-        $(By.cssSelector("[data-id='0']")).sendKeys(basecode);
+        $(By.xpath("//input[@data-id='0']")).sendKeys(basecode);
         Configuration.timeout = 10000;
         $("header").shouldBe(exist,visible);
         open(actionexpert);
