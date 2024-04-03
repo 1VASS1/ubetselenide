@@ -1,21 +1,18 @@
 package tests;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.ElementsCollection;
 import core.BaseSelenideTest;
 
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.Select;
 
 import static com.codeborne.selenide.Selenide.*;
-import static helpers.TestValues.*;
-import static helpers.TestLinks.*;
+import static com.google.common.util.concurrent.Futures.submit;
 import static helpers.TestXpath.*;
 
-public class backoffice extends BaseSelenideTest {
+public class BackofficeTest extends BaseSelenideTest {
 
     /**
      * Ручные тесты бэкофис
@@ -82,9 +79,7 @@ public class backoffice extends BaseSelenideTest {
     @Test
     public void falseverif() throws InterruptedException {
 
-        open(back);
-        $(By.name("login")).sendKeys(loginback);
-        $(By.name("password")).sendKeys(passback);
+        authbackoffice();
         $(By.xpath("//button[@type='submit']")).click();
         $(By.xpath("//a[@href='/players/unverifiedList']")).click();
         $(By.xpath("//a[@type='button']")).click();
@@ -99,10 +94,7 @@ public class backoffice extends BaseSelenideTest {
     //Выполнять тест если нужно несколько выводов подряд
     //@RepeatedTest(5)
     public void falsepay() throws InterruptedException {
-        open(back);
-        $(By.name("login")).sendKeys(loginback);
-        $(By.name("password")).sendKeys(passback);
-        $(By.xpath(submit)).click();
+        authbackoffice();
         $(By.xpath("//a[@href='/cashouts/list']")).click();
         $(By.xpath("//a[@class='btn btn-danger']")).click();
         $(By.xpath("//input[@value='5']")).click();
@@ -118,10 +110,7 @@ public class backoffice extends BaseSelenideTest {
     @Test
     public void linksbackoffice() throws InterruptedException {
 
-        open(back);
-        $(By.name("login")).sendKeys(loginback);
-        $(By.name("password")).sendKeys(passback);
-        $(By.xpath(submit)).click();
+        authbackoffice();
         //Получаем основные разделы
         ElementsCollection links = $$("a[href]");
 
@@ -130,5 +119,37 @@ public class backoffice extends BaseSelenideTest {
         }
         System.out.println("Количество ссылок на странице: " + links.size());
       }
+
+
+
+
+    //Генерация промокода фрибет
+    @Test
+    public void createpromo()  {
+        authbackoffice();
+        open("https://backoffice-test.ubet.kz/promocodes/list");
+        $(By.xpath("//a[@href='/promocodes/add']")).click();
+        $(By.id("issueTools")).selectOptionContainingText("Free Bet");
+        $(By.id("type")).selectOptionContainingText("Массовый");
+        $(By.id("device")).selectOptionContainingText("web & app");
+
+        $(By.name("min_odds")).sendKeys("1");
+
+        $(By.id("limit_count_bet")).click();
+        $(By.id("limit_count_bet")).clear();
+        $(By.id("limit_count_bet")).sendKeys("1");
+
+        $(By.id("name")).sendKeys("AUTOTEST PROMO");
+        $(By.id("date_start")).sendKeys("01-04-2024");
+        $(By.id("date_end")).sendKeys("01-04-2029");
+        $(By.id("active_tm")).sendKeys("777");
+        $(By.id("time_to_activation")).sendKeys("777");
+        $(By.id("codeRow")).click();
+        String randtext = RandomStringUtils.randomAlphabetic(3).toLowerCase();
+        $(By.id("code")).sendKeys("promo" + randtext);
+        $(By.id("activations")).sendKeys("777");
+        $(By.id("bonus_summ")).sendKeys("5000");
+        $(By.xpath(submit)).click();
+    }
     }
 
